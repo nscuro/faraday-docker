@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  faraday-server-db:
+    image: postgres:9.4
+    volumes:
+      - "faraday-server-db-data:/var/lib/postgresql/data"
+    env_file:
+      - ./faraday-server-db.env
+    restart: unless-stopped
+
+  faraday-server-app:
+    build: ./images/faraday-server
+    image: nscuro/faraday-server:3.1.1
+    ports:
+      - "5985:5985"
+      - "9000:9000"
+    volumes:
+      - "faraday-server-app-data:/root/.faraday"
+    environment:
+      - POSTGRES_HOST=faraday-server-db
+    env_file:
+      - ./faraday-server-db.env
+      - ./faraday-server-app.env
+    depends_on:
+      - faraday-server-db
+    restart: unless-stopped
+
+volumes:
+  faraday-server-db-data:
+  faraday-server-app-data:
