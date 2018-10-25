@@ -14,7 +14,7 @@ Built for Faraday 3.1.1 - most likely works for future versions also.
 * Adjust the environment variables in [`faraday-server-db.env`](./faraday-server-db.env) and [`faraday-server-app.env`](./faraday-server-app.env) as needed
   * For testing purposes the defaults work just fine
   * The default values are defines in the server's [`Dockerfile`](./images/faraday-server/Dockerfile)
-* `git clone https://guthub.com/nscuro/faraday-docker.git`
+* `git clone https://github.com/nscuro/faraday-docker.git`
 * `cd faraday-docker`
 * `docker-compose up --build -d`
 
